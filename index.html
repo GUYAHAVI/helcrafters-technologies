@@ -251,6 +251,159 @@
           }
         }
       }
+      /* Contact Section Styles */
+      #contact {
+        background: #020258;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .contact-particles,
+      .footer-particles {
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+      }
+
+      .glass-card {
+        background: rgba(2, 2, 88, 0.7);
+        backdrop-filter: blur(10px);
+        border-radius: 10px;
+        border: 1px solid rgba(19, 232, 233, 0.2);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        transition: all 0.3s ease;
+      }
+
+      .glass-card:hover {
+        border-color: rgba(19, 232, 233, 0.4);
+        box-shadow: 0 8px 32px rgba(19, 232, 233, 0.2);
+      }
+
+      .form-control {
+        color: #fff !important;
+        border: 1px solid rgba(19, 232, 233, 0.3);
+        padding: 0.75rem 1rem;
+      }
+
+      .form-control:focus {
+        background: rgba(19, 232, 233, 0.1);
+        border-color: #13e8e9;
+        box-shadow: 0 0 0 0.25rem rgba(19, 232, 233, 0.25);
+      }
+
+      .form-control::placeholder {
+        color: rgba(255, 255, 255, 0.6);
+      }
+
+      .contact-info li {
+        padding: 0.5rem 0;
+        border-bottom: 1px solid rgba(19, 232, 233, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      .contact-info li:hover {
+        transform: translateX(5px);
+        border-color: rgba(19, 232, 233, 0.3);
+      }
+
+      /* Social Bubbles */
+      .social-bubbles {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .social-bubble {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background: rgba(19, 232, 233, 0.1);
+        border-radius: 50%;
+        color: #13e8e9;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .social-bubble::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(
+          circle,
+          rgba(19, 232, 233, 0.3) 0%,
+          transparent 70%
+        );
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .social-bubble:hover {
+        transform: translateY(-3px);
+        background: rgba(19, 232, 233, 0.2);
+        box-shadow: 0 0 15px rgba(19, 232, 233, 0.4);
+      }
+
+      .social-bubble:hover::before {
+        opacity: 1;
+      }
+
+      /* Hover Bubble Effect */
+      .hover-bubble {
+        position: relative;
+        display: inline-block;
+      }
+
+      .hover-bubble::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: #13e8e9;
+        transition: width 0.3s ease;
+      }
+
+      .hover-bubble:hover::after {
+        width: 100%;
+      }
+
+      .bubble-hover {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .bubble-hover::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 5px;
+        height: 5px;
+        background: rgba(255, 255, 255, 0.4);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+        transition: all 0.5s ease;
+      }
+
+      .bubble-hover:hover::before {
+        width: 200px;
+        height: 200px;
+        opacity: 0.3;
+      }
+      footer {
+        height: 100%;
+      }
     </style>
   </head>
 
@@ -261,7 +414,11 @@
         <a class="navbar-brand" href="#home">
           <span class="text-primary">Hel</span>Crafters
         </a>
-        <button class="navbar-toggler bubble-toggler" type="button" aria-label="Toggle navigation">
+        <button
+          class="navbar-toggler bubble-toggler"
+          type="button"
+          aria-label="Toggle navigation"
+        >
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
@@ -560,26 +717,33 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-5 bg-dark text-light">
-      <div class="container">
+    <section id="contact" class="position-relative py-5 text-light">
+      <!-- Particles Background -->
+      <div class="contact-particles"></div>
+
+      <div class="container position-relative" style="z-index: 2">
         <div class="row justify-content-center">
           <div class="col-lg-8 text-center">
-            <h2 class="display-4 mb-4 text-primary">
-              Get in <span class="text-light">Touch</span>
+            <h2 class="display-4 mb-4">
+              Get in <span class="text-primary">Touch</span>
             </h2>
             <p class="lead mb-5">
               Ready to start your project? We'd love to hear from you!
+            </p>
+            <p class="text-center">
+              <i class="fa-solid fa-minus long-minus"></i>
             </p>
           </div>
         </div>
 
         <div class="row">
           <div class="col-lg-6">
-            <form>
+            <form id="contactForm" class="glass-card p-4">
               <div class="mb-3">
                 <input
                   type="text"
-                  class="form-control"
+                  name="name"
+                  class="form-control bg-transparent text-light"
                   placeholder="Your Name"
                   required
                 />
@@ -587,65 +751,77 @@
               <div class="mb-3">
                 <input
                   type="email"
-                  class="form-control"
+                  name="email"
+                  class="form-control bg-transparent text-light"
                   placeholder="Your Email"
                   required
                 />
               </div>
               <div class="mb-3">
-                <input type="text" class="form-control" placeholder="Subject" />
+                <input
+                  type="text"
+                  name="subject"
+                  class="form-control bg-transparent text-light"
+                  placeholder="Subject"
+                />
               </div>
               <div class="mb-3">
                 <textarea
-                  class="form-control"
+                  name="message"
+                  class="form-control bg-transparent text-light"
                   rows="5"
                   placeholder="Your Message"
                   required
                 ></textarea>
               </div>
-              <button type="submit" class="btn btn-primary btn-lg">
+              <button type="submit" class="btn btn-primary btn-lg bubble-hover">
                 Send Message
               </button>
+              <div
+                id="formAlert"
+                class="mt-3 alert"
+                style="display: none"
+              ></div>
             </form>
           </div>
 
           <div class="col-lg-6 mt-4 mt-lg-0">
-            <div class="card h-100 border-primary">
-              <div class="card-body">
-                <h3 class="card-title mb-4">Contact Information</h3>
-                <ul class="list-unstyled">
-                  <li class="mb-3">
-                    <i class="fas fa-map-marker-alt text-primary me-2"></i>
-                    <span>123 Tech Street, Silicon Valley, CA 94025</span>
-                  </li>
-                  <li class="mb-3">
-                    <i class="fas fa-phone text-primary me-2"></i>
-                    <span>+1 (555) 123-4567</span>
-                  </li>
-                  <li class="mb-3">
-                    <i class="fas fa-envelope text-primary me-2"></i>
-                    <span>info@helcrafters.tech</span>
-                  </li>
-                  <li class="mb-3">
-                    <i class="fas fa-clock text-primary me-2"></i>
-                    <span>Monday - Friday: 9:00 AM - 6:00 PM</span>
-                  </li>
-                </ul>
+            <div class="glass-card h-100 p-4">
+              <h3 class="card-title mb-4 text-primary">Contact Information</h3>
+              <ul class="list-unstyled contact-info">
+                <li class="mb-3">
+                  <i class="fas fa-map-marker-alt text-primary me-2"></i>
+                  <span>Naivasha, Kenya</span>
+                </li>
+                <li class="mb-3">
+                  <i class="fas fa-phone text-primary me-2"></i>
+                  <span>+254 717 745 891</span>
+                </li>
+                <li class="mb-3">
+                  <i class="fas fa-envelope text-primary me-2"></i>
+                  <span>harveyelvis24@gmail.com</span>
+                </li>
+                <li class="mb-3">
+                  <i class="fas fa-clock text-primary me-2"></i>
+                  <span>Monday - Friday: 9:00 AM - 6:00 PM EAT</span>
+                </li>
+              </ul>
 
-                <div class="mt-4">
-                  <h5 class="mb-3">Follow Us</h5>
-                  <a href="#" class="text-primary me-3"
-                    ><i class="fab fa-twitter fa-2x"></i
-                  ></a>
-                  <a href="#" class="text-primary me-3"
-                    ><i class="fab fa-facebook fa-2x"></i
-                  ></a>
-                  <a href="#" class="text-primary me-3"
-                    ><i class="fab fa-linkedin fa-2x"></i
-                  ></a>
-                  <a href="#" class="text-primary me-3"
-                    ><i class="fab fa-github fa-2x"></i
-                  ></a>
+              <div class="mt-4">
+                <h5 class="mb-3 text-primary">Follow Us</h5>
+                <div class="social-bubbles">
+                  <a href="#" class="social-bubble">
+                    <i class="fab fa-twitter"></i>
+                  </a>
+                  <a href="#" class="social-bubble">
+                    <i class="fab fa-facebook-f"></i>
+                  </a>
+                  <a href="#" class="social-bubble">
+                    <i class="fab fa-linkedin-in"></i>
+                  </a>
+                  <a href="#" class="social-bubble">
+                    <i class="fab fa-github"></i>
+                  </a>
                 </div>
               </div>
             </div>
@@ -655,30 +831,68 @@
     </section>
 
     <!-- Footer -->
-    <footer class="py-4 bg-dark text-light">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6">
-            <h5><span class="text-primary">Hel</span>Crafters Technologies</h5>
-            <p>Innovate. Craft. Elevate.</p>
-            <p>&copy; 2023 HelCrafters Technologies. All rights reserved.</p>
+    <footer class="position-relative py-4 bg-dark text-light">
+      <!-- Particles Background -->
+      <div id="particles" class="particles-container">
+        <div class="container position-relative" style="z-index: 2">
+          <!-- Particles Background (separate from content) -->
+
+          <div class="morphing-bubbles-hero">
+            <div class="morphing-bubble main-bubble"></div>
+            <div class="morphing-bubble secondary-bubble"></div>
+            <div class="morphing-bubble accent-bubble"></div>
+            <div class="morphing-bubble tiny-bubble-1"></div>
+            <div class="morphing-bubble tiny-bubble-2"></div>
           </div>
-          <div class="col-md-3">
-            <h5>Quick Links</h5>
-            <ul class="list-unstyled">
-              <li><a href="#" class="text-light">Home</a></li>
-              <li><a href="#services" class="text-light">Services</a></li>
-              <li><a href="#about" class="text-light">About</a></li>
-              <li><a href="#contact" class="text-light">Contact</a></li>
-            </ul>
-          </div>
-          <div class="col-md-3">
-            <h5>Legal</h5>
-            <ul class="list-unstyled">
-              <li><a href="#" class="text-light">Privacy Policy</a></li>
-              <li><a href="#" class="text-light">Terms of Service</a></li>
-              <li><a href="#" class="text-light">Cookie Policy</a></li>
-            </ul>
+          <div class="row pt-5 mt-5">
+            <div class="col-md-6 mb-4 mb-md-0">
+              <h5>
+                <span class="text-primary">Hel</span>Crafters Technologies
+              </h5>
+              <p class="mb-2">Innovate. Craft. Elevate.</p>
+              <p>
+                &copy; <span class="current-year"></span> HelCrafters
+                Technologies. All rights reserved.
+              </p>
+
+              <!-- Floating bubbles in footer -->
+              <div class="footer-bubbles"></div>
+            </div>
+            <div class="col-md-3 mb-4 mb-md-0">
+              <h5 class="text-primary">Quick Links</h5>
+              <ul class="list-unstyled">
+                <li class="mb-2">
+                  <a href="#" class="text-light hover-bubble">Home</a>
+                </li>
+                <li class="mb-2">
+                  <a href="#services" class="text-light hover-bubble"
+                    >Services</a
+                  >
+                </li>
+                <li class="mb-2">
+                  <a href="#about" class="text-light hover-bubble">About</a>
+                </li>
+                <li>
+                  <a href="#contact" class="text-light hover-bubble">Contact</a>
+                </li>
+              </ul>
+            </div>
+            <div class="col-md-3">
+              <h5 class="text-primary">Legal</h5>
+              <ul class="list-unstyled">
+                <li class="mb-2">
+                  <a href="#" class="text-light hover-bubble">Privacy Policy</a>
+                </li>
+                <li class="mb-2">
+                  <a href="#" class="text-light hover-bubble"
+                    >Terms of Service</a
+                  >
+                </li>
+                <li>
+                  <a href="#" class="text-light hover-bubble">Cookie Policy</a>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
