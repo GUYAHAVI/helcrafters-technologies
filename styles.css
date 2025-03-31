@@ -81,14 +81,14 @@ section {
 }
 
 .btn-primary {
-  background-color: #13e8e9;
+  background-color: #13e8e9 !important; ;
   border-color: #13e8e9;
-  color: #020258;
+  color: #020258 !important;
 }
 
 .btn-primary:hover {
-  background-color: #0fb9ba;
-  border-color: #0fb9ba;
+  background-color: #fff !important;
+  border-color: #0fb9ba !important;
 }
 
 .btn-outline-light:hover {
