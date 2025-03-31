@@ -117,7 +117,61 @@ section {
   .brandtext p {
     font-size: 1.2rem;
   }
+  .brandtext h1 {
+    font-size: 2.5rem;
+  }
+
+  .brandtext p {
+    font-size: 1.2rem;
+  }
+
+  .navbar {
+    padding: 0.5rem 1rem;
+  }
+  .navbar-brand {
+    font-size: 1.5rem;
+  }
+  .navbar-nav .nav-link {
+    font-size: 1rem;
+  }
+  .navbar-toggler {
+    padding: 0.25rem 0.5rem;
+  }
+  .navbar-toggler-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
 }
+/* Responsive adjustments */
+@media (max-width: 920px) {
+  .brandtext h1 {
+    font-size: 2.5rem;
+  }
+
+  .brandtext p {
+    font-size: 1.2rem;
+  }
+
+  .navbar {
+    padding: 0.5rem 1rem;
+  }
+  .navbar-brand {
+    font-size: 1.5rem;
+  }
+  .navbar-nav .nav-link {
+    font-size: 1rem;
+  }
+  .navbar-toggler {
+    padding: 0.25rem 0.5rem;
+  }
+  .navbar-toggler-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+}
+
+
 /* Morphing Bubbles - Enhanced */
 .morphing-bubbles {
   position: relative;
