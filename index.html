@@ -38,6 +38,9 @@
 
       /* Mobile Menu Animation */
       @media (max-width: 991px) {
+        body{
+          overflow: hidden !important;
+        }
         .navbar-collapse {
           position: relative;
           top: 0;
@@ -119,7 +122,7 @@
       .navbar-brand {
         font-family: "Boldonse", sans-serif;
         font-size: 1.8rem;
-        transition: all 0.3s ease;
+        transition: all 0.3s ease-in-out;
       }
 
       .navbar-brand:hover {
